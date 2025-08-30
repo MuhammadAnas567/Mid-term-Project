@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const authMiddleware = (roles = []) => {
   return (req, res, next) => {
-    const token = req.header("Authorization")?.split(" ")[1];
+    const token = req.header("Authorization");  // ab direct token lega
     if (!token) return res.status(401).json({ message: "Not Access" });
 
     try {
