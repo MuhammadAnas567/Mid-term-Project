@@ -1,21 +1,28 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/Product");
+const productController = require("../controllers/productController");
 const authMiddleware = require("../middleware/authMiddleware");
+const upload = require("../utils/upload");
 
-router.post("/", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const product = new Product(req.body);
-    await product.save();
-    res.json(product);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.get("/", productController.getAllProducts);
+router.get("/:id", productController.getProductById);
 
-router.get("/", authMiddleware(["Admin", "Manager"]), async (req, res) => {
-  const products = await Product.find().populate("brand outlet");
-  res.json(products);
-});
+router.post(
+  "/",
+  authMiddleware(["Admin"]),
+  upload.single("picture"),
+  productController.createProduct
+);
+router.put(
+  "/:id",
+  authMiddleware(["Admin"]),
+  upload.single("picture"),
+  productController.updateProduct
+);
+router.delete(
+  "/:id",
+  authMiddleware(["Admin"]),
+  productController.deleteProduct
+);
 
 module.exports = router;

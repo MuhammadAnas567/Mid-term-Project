@@ -1,57 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const Outlet = require("../models/Outlet");
-const authMiddleware = require("../middleware/authMiddleware");
+const outletController = require("../controllers/outletController");
+const authMiddleware = require("../middlewares/authMiddleware");
+const upload = require("../utils/upload");
 
-router.post("/", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const outlet = new Outlet(req.body);
-    await outlet.save();
-    res.json(outlet);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+// Public routes
+router.get("/", outletController.getAllOutlets);
+router.get("/:id", outletController.getOutletById);
 
-router.get("/", authMiddleware(["Admin", "Manager"]), async (req, res) => {
-  try {
-    const outlets = await Outlet.find().populate("brand");
-    res.json(outlets);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// Admin-only routes
+router.post(
+  "/",
+  authMiddleware(["Admin"]),
+  upload.single("picture"),
+  outletController.createOutlet
+);
 
-router.get("/:id", authMiddleware(["Admin", "Manager"]), async (req, res) => {
-  try {
-    const outlet = await Outlet.findById(req.params.id).populate("brand");
-    if (!outlet) return res.status(404).json({ error: "Outlet not found" });
-    res.json(outlet);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.put(
+  "/:id",
+  authMiddleware(["Admin"]),
+  upload.single("picture"),
+  outletController.updateOutlet
+);
 
-router.put("/:id", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const outlet = await Outlet.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!outlet) return res.status(404).json({ error: "Outlet not found" });
-    res.json(outlet);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-router.delete("/:id", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const outlet = await Outlet.findByIdAndDelete(req.params.id);
-    if (!outlet) return res.status(404).json({ error: "Outlet not found" });
-    res.json({ message: "Outlet deleted successfully" });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.delete(
+  "/:id",
+  authMiddleware(["Admin"]),
+  outletController.deleteOutlet
+);
 
 module.exports = router;

@@ -1,40 +1,32 @@
+// routes/brandRoutes.js
 const express = require("express");
-const Brand = require("../models/Brand");
-const authMiddleware = require("../middleware/authMiddleware");
-
 const router = express.Router();
+const brandController = require("../controllers/brandController");
+const upload = require("../utils/upload"); // multer setup
+const authMiddleware = require("../middleware/authMiddleware"); // your auth middleware
 
-router.post("/", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const brand = new Brand(req.body);
-    await brand.save();
-    res.json(brand);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.post(
+  "/",
+  authMiddleware(["Admin"]),
+  upload.single("picture"),
+  brandController.createBrand
+);
 
-router.get("/", authMiddleware(), async (req, res) => {
-  const brands = await Brand.find();
-  res.json(brands);
-});
+router.get("/", brandController.getBrands);
 
-router.put("/:id", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const brand = await Brand.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(brand);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.get("/:id", brandController.getBrandById);
 
-router.delete("/:id", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    await Brand.findByIdAndDelete(req.params.id);
-    res.json({ message: "Brand deleted" });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.put(
+  "/:id",
+  authMiddleware(["Admin"]),
+  upload.single("picture"),
+  brandController.updateBrand
+);
+
+router.delete(
+  "/:id",
+  authMiddleware(["Admin"]),
+  brandController.deleteBrand
+);
 
 module.exports = router;

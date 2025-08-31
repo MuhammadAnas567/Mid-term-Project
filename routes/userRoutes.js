@@ -1,21 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
-const authMiddleware = require("../middleware/authMiddleware");
+const multer = require("multer");
+const userController = require("../controllers/userController");
 
-router.post("/", authMiddleware(["Admin"]), async (req, res) => {
-  try {
-    const user = new User(req.body);
-    await user.save();
-    res.json(user);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+// Configure multer storage
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // folder for uploads
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 
-router.get("/", authMiddleware(["Admin"]), async (req, res) => {
-  const users = await User.find().populate("role");
-  res.json(users);
-});
+const upload = multer({ storage });
+
+// CRUD Routes
+router.post("/", upload.single("picture"), userController.createUser);
+router.get("/", userController.getUsers);
+router.get("/:id", userController.getUserById);
+router.put("/:id", upload.single("picture"), userController.updateUser);
+router.delete("/:id", userController.deleteUser);
 
 module.exports = router;
