@@ -1,5 +1,6 @@
 const Product = require("../models/Product");
-const paginate = require("../utils/paginate");
+const paginate = require("../utils/pagination");
+
 
 // Create product
 exports.createProduct = async (req, res) => {

@@ -1,6 +1,9 @@
+// controllers/outletController.js
 const Outlet = require("../models/Outlet");
 const paginate = require("../utils/pagination");
 
+
+// Create a new outlet
 exports.createOutlet = async (req, res) => {
   try {
     const { name, location, brand } = req.body;
@@ -24,12 +27,13 @@ exports.createOutlet = async (req, res) => {
   }
 };
 
-exports.getOutlets = async (req, res) => {
+// Get all outlets (with pagination + brand populate)
+exports.getAllOutlets = async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
 
     const result = await paginate(
-      Outlet.find().populate("brand"), // supports populate
+      Outlet.find().populate("brand"),
       parseInt(page),
       parseInt(limit)
     );
@@ -40,6 +44,7 @@ exports.getOutlets = async (req, res) => {
   }
 };
 
+// Get outlet by ID
 exports.getOutletById = async (req, res) => {
   try {
     const outlet = await Outlet.findById(req.params.id).populate("brand");
@@ -50,6 +55,7 @@ exports.getOutletById = async (req, res) => {
   }
 };
 
+// Update outlet
 exports.updateOutlet = async (req, res) => {
   try {
     const { name, location, brand } = req.body;
@@ -72,6 +78,7 @@ exports.updateOutlet = async (req, res) => {
   }
 };
 
+// Delete outlet
 exports.deleteOutlet = async (req, res) => {
   try {
     const outlet = await Outlet.findByIdAndDelete(req.params.id);

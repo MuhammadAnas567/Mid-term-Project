@@ -1,7 +1,6 @@
-const Brand = require("../models/brandModel");
+const Brand = require("../models/Brand");
 const paginate = require("../utils/pagination");
 
-// ✅ Create brand
 exports.createBrand = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -19,7 +18,6 @@ exports.createBrand = async (req, res) => {
   }
 };
 
-// ✅ Get brands with pagination (using paginate.js)
 exports.getBrands = async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
@@ -32,7 +30,6 @@ exports.getBrands = async (req, res) => {
   }
 };
 
-// ✅ Get single brand
 exports.getBrandById = async (req, res) => {
   try {
     const brand = await Brand.findById(req.params.id);
@@ -44,7 +41,6 @@ exports.getBrandById = async (req, res) => {
   }
 };
 
-// ✅ Update brand
 exports.updateBrand = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -67,7 +63,6 @@ exports.updateBrand = async (req, res) => {
   }
 };
 
-// ✅ Delete brand
 exports.deleteBrand = async (req, res) => {
   try {
     const deletedBrand = await Brand.findByIdAndDelete(req.params.id);

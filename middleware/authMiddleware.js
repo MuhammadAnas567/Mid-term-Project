@@ -1,21 +1,28 @@
+// middleware/authMiddleware.js
 const jwt = require("jsonwebtoken");
 
+// roles = array of allowed roles, e.g. ["Admin", "Manager"]
 const authMiddleware = (roles = []) => {
   return (req, res, next) => {
-    const token = req.header("Authorization");
-    if (!token) return res.status(401).json({ message: "Not Access" });
-
     try {
-      const verified = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = verified;
+      const authHeader = req.headers["authorization"];
+      if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({ message: "No token provided" });
+      }
 
-      if (roles.length && !roles.includes(verified.role)) {
-        return res.status(403).json({ message: "Forbidden: Access denied" });
+      const token = authHeader.split(" ")[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      req.user = decoded; // save user info to request
+
+      // Role check
+      if (roles.length && !roles.includes(decoded.role)) {
+        return res.status(403).json({ message: "Forbidden: insufficient role" });
       }
 
       next();
-    } catch (err) {
-      res.status(400).json({ message: "Invalid Token" });
+    } catch (error) {
+      return res.status(401).json({ message: "Unauthorized", error: error.message });
     }
   };
 };

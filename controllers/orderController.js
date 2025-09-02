@@ -1,6 +1,7 @@
 const Order = require("../models/Order");
 const Product = require("../models/Product");
-const paginate = require("../utils/paginate");
+const paginate = require("../utils/pagination");
+
 
 // Create new order
 exports.createOrder = async (req, res) => {

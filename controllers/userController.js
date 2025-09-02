@@ -1,5 +1,6 @@
 const User = require("../models/User");
-const paginate = require("../utils/paginate");
+const paginate = require("../utils/pagination");
+
 
 // Create User
 exports.createUser = async (req, res) => {
