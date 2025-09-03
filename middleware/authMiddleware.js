@@ -1,24 +1,21 @@
-// middleware/authMiddleware.js
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");   // 👈 ye import zaroori hai
 
-// roles = array of allowed roles, e.g. ["Admin", "Manager"]
 const authMiddleware = (roles = []) => {
   return (req, res, next) => {
     try {
       const authHeader = req.headers["authorization"];
-      if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      if (!authHeader || !authHeader.startsWith("Bearer")) {
         return res.status(401).json({ message: "No token provided" });
       }
 
       const token = authHeader.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      req.user = decoded; // save user info to request
+      req.user = decoded; 
 
-      // Role check
-      if (roles.length && !roles.includes(decoded.role)) {
-        return res.status(403).json({ message: "Forbidden: insufficient role" });
-      }
+      // if (roles.length && !roles.includes(decoded.role)) {
+      //   return res.status(403).json({ message: "Forbidden: insufficient role" });
+      // }
 
       next();
     } catch (error) {
@@ -27,4 +24,4 @@ const authMiddleware = (roles = []) => {
   };
 };
 
-module.exports = authMiddleware;
+module.exports = authMiddleware;   // 👈 is line ke bina import kaam nahi karega
