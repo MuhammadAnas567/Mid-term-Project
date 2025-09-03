@@ -1,9 +1,7 @@
-// seed.js
 require("dotenv").config();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-// Models
 const Role = require("./models/Role");
 const Brand = require("./models/Brand");
 const Outlet = require("./models/Outlet");
@@ -17,7 +15,7 @@ const SHOULD_RESET = process.argv.includes("--reset");
 const seed = async () => {
   try {
     await mongoose.connect(MONGO_URI);
-    console.log("✅ DB Connected");
+    console.log(" DB Connected");
 
     if (SHOULD_RESET) {
       await Promise.all([
@@ -28,16 +26,14 @@ const seed = async () => {
         Product.deleteMany({}),
         Order.deleteMany({}),
       ]);
-      console.log("🧹 Old Data Cleared");
+      console.log("Old Data Cleared");
     }
 
-    // 1) Roles
     const roles = await Role.insertMany(
       ["Admin", "Manager", "Cashier", "Staff", "Customer"].map((r) => ({ name: r }))
     );
-    console.log("✅ Roles inserted");
+    console.log("Roles inserted");
 
-    // 2) Brands
     const brands = await Brand.insertMany([
       { name: "Nike", description: "Sportswear", picture: "nike.png" },
       { name: "Adidas", description: "Athletic wear", picture: "adidas.png" },
@@ -45,9 +41,8 @@ const seed = async () => {
       { name: "Reebok", description: "Fitness products", picture: "reebok.png" },
       { name: "Local Brand", description: "In-house items", picture: "local.png" },
     ]);
-    console.log("✅ Brands inserted");
+    console.log("Brands inserted");
 
-    // 3) Outlets
     const outlets = await Outlet.insertMany([
       { name: "Main Branch", location: "Karachi", brand: brands[0]._id, picture: "main.png" },
       { name: "Bahria Town", location: "Lahore", brand: brands[1]._id, picture: "bahria.png" },
@@ -55,9 +50,8 @@ const seed = async () => {
       { name: "Clifton Outlet", location: "Karachi", brand: brands[3]._id, picture: "clifton.png" },
       { name: "Multan Branch", location: "Multan", brand: brands[4]._id, picture: "multan.png" },
     ]);
-    console.log("✅ Outlets inserted");
+    console.log("Outlets inserted");
 
-    // 4) Users
     const hashedPasswords = await Promise.all([
       bcrypt.hash("admin123", 10),
       bcrypt.hash("manager123", 10),
@@ -73,9 +67,8 @@ const seed = async () => {
       { name: "Staff Member", email: "staff@pos.com", password: hashedPasswords[3], role: roles[3]._id, outlet: outlets[3]._id },
       { name: "Customer User", email: "customer@pos.com", password: hashedPasswords[4], role: roles[4]._id, outlet: outlets[4]._id },
     ]);
-    console.log("✅ Users inserted (login: admin@pos.com / admin123)");
+    console.log("Users inserted (login: admin@pos.com / admin123)");
 
-    // 5) Products
     const products = await Product.insertMany([
       { name: "Nike Air Zoom", price: 15000, stock: 20, brand: brands[0]._id, outlet: outlets[0]._id, picture: "nike-shoes.png" },
       { name: "Adidas Ultraboost", price: 18000, stock: 15, brand: brands[1]._id, outlet: outlets[1]._id, picture: "adidas-shoes.png" },
@@ -83,9 +76,8 @@ const seed = async () => {
       { name: "Reebok Shorts", price: 3000, stock: 30, brand: brands[3]._id, outlet: outlets[3]._id, picture: "reebok-shorts.png" },
       { name: "Local Cap", price: 1200, stock: 100, brand: brands[4]._id, outlet: outlets[4]._id, picture: "local-cap.png" },
     ]);
-    console.log("✅ Products inserted");
+    console.log("Products inserted");
 
-    // 6) Orders
     const orders = await Order.insertMany([
       {
         user: users[2]._id,
@@ -123,12 +115,12 @@ const seed = async () => {
         status: "Completed",
       },
     ]);
-    console.log("✅ Orders inserted");
+    console.log("Orders inserted");
 
-    console.log("🌱 Seeding Done Successfully!");
+    console.log("Seeding Done Successfully!");
     process.exit(0);
   } catch (err) {
-    console.error("❌ Seeding Error:", err);
+    console.error("Seeding Error:", err);
     process.exit(1);
   }
 };

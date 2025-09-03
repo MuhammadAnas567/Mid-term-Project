@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");   // 👈 ye import zaroori hai
+const jwt = require("jsonwebtoken");
 
 const authMiddleware = (roles = []) => {
   return (req, res, next) => {
@@ -12,11 +12,6 @@ const authMiddleware = (roles = []) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       req.user = decoded; 
-
-      // if (roles.length && !roles.includes(decoded.role)) {
-      //   return res.status(403).json({ message: "Forbidden: insufficient role" });
-      // }
-
       next();
     } catch (error) {
       return res.status(401).json({ message: "Unauthorized", error: error.message });
@@ -24,4 +19,4 @@ const authMiddleware = (roles = []) => {
   };
 };
 
-module.exports = authMiddleware;   // 👈 is line ke bina import kaam nahi karega
+module.exports = authMiddleware;
