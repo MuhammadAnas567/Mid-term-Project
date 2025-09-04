@@ -13,26 +13,53 @@ exports.createOrder = async (req, res) => {
     }
 
     let total = 0;
+    const productUpdates = [];
+
     for (let item of products) {
       const dbProduct = await Product.findById(item.product);
-      if (!dbProduct) return res.status(404).json({ error: "Product not found" });
+
+      if (!dbProduct) {
+        return res.status(404).json({ error: `Product not found: ${item.product}` });
+      }
+
+      if (dbProduct.stock < item.quantity) {
+        return res.status(400).json({
+          error: `Product "${dbProduct.name}" does not have enough stock. Available: ${dbProduct.stock}, Requested: ${item.quantity}`,
+        });
+      }
+
       total += item.quantity * dbProduct.price;
+
+      productUpdates.push({
+        id: dbProduct._id,
+        quantity: item.quantity,
+        price:item.price
+      });
     }
 
     const orderData = { user, outlet, products, totalAmount: total };
 
-    if (req.file) {
-      orderData.picture = req.file.path; // store uploaded receipt/invoice
-    }
-
     const order = new Order(orderData);
     await order.save();
 
-    res.status(201).json({ success: true, data: order });
+    for (let item of productUpdates) {
+      await Product.findByIdAndUpdate(item.id, { $inc: { stock: -item.quantity } });
+    }
+
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const orderPlaced = await paginate(Order, page, limit, { "_id": order._id }, [{ path: "user", select: "-password" }, "outlet", "outlet.brand", "products", "products.product"])
+
+    res.status(201).json({ success: true, data: orderPlaced });
+
+
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
+
 
 // Get all orders (with pagination)
 exports.getOrders = async (req, res) => {
@@ -40,11 +67,7 @@ exports.getOrders = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    const orders = await paginate(
-      Order.find().populate("user outlet products.product"),
-      page,
-      limit
-    );
+    const orders = await paginate(Order, page, limit, {}, [{ path: "user", select: "-password" }, "outlet", "outlet.brand", "products", "products.product"])
 
     res.json(orders);
   } catch (err) {
@@ -55,7 +78,12 @@ exports.getOrders = async (req, res) => {
 // Get order by ID
 exports.getOrderById = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id).populate("user outlet products.product");
+    
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const order = await paginate(Order, page, limit, { "_id": req.params.id }, [{path:"user", select:"-password"}, "outlet", "products", "products.product"])
+
     if (!order) return res.status(404).json({ error: "Order not found" });
     res.json({ success: true, data: order });
   } catch (err) {

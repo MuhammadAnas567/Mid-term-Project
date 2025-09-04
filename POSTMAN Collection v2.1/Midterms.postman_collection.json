@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "cb966879-63f8-4cad-9e99-494f933ba829",
+		"name": "Midterms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33143302"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Muhammad Shan\",\r\n    \"email\":\"sheikh.shan28@gmail.com\",\r\n    \"password\":\"Abcd@123\",\r\n    \"role\":\"68b921c2d672023613d2a4e3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@pos.com\",\r\n    \"password\":\"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "getProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjkzYWQwYjRlYzYyNDcyOGJjYjBiZCIsInJvbGUiOiI2OGI5MjFjMmQ2NzIwMjM2MTNkMmE0ZTMiLCJpYXQiOjE3NTY5Njk2ODQsImV4cCI6MTc1NzA1NjA4NH0.QAF--p4XBDbK4w3VRNZYalcZEbrSrIbL3cjLrL42Gkw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "New Summer Collection",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Stiched",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/hp/Desktop/25-08-8e1-06ta_multi_2.jpg"
+								},
+								{
+									"key": "price",
+									"value": "3000",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "68b9361880232dbe3b828cc1",
+									"type": "text"
+								},
+								{
+									"key": "outlet",
+									"value": "68b939de95cd5d989f434baf",
+									"type": "text"
+								},
+								{
+									"key": "user",
+									"value": "68b93ad0b4ec624728bcb0bd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "getAllRoles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Muhammad Shan",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "03336747574",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sheikh.shan28@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Abcd@123",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Admin",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/Muhammad Shan/Desktop/1674652143241.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Walking Customer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brands",
+			"item": [
+				{
+					"name": "AddBrands",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjkyMjM5MjkxZGRjZTgyZWNlNThjNiIsInJvbGUiOiI2OGI5MjFjMmQ2NzIwMjM2MTNkMmE0ZTMiLCJpYXQiOjE3NTY5NjM0NzYsImV4cCI6MTc1NzA0OTg3Nn0.DUqYxTdRm3BLZ9SiSbcx3hl8r374wRxMxHK2VVpztkc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Khadi",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Garments",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/hp/Desktop/khadi.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/brands",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBrands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/brands?page=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"brands"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Outlets",
+			"item": [
+				{
+					"name": "AddOutlets",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjkyMjM5MjkxZGRjZTgyZWNlNThjNiIsInJvbGUiOiI2OGI5MjFjMmQ2NzIwMjM2MTNkMmE0ZTMiLCJpYXQiOjE3NTY5NjM0NzYsImV4cCI6MTc1NzA0OTg3Nn0.DUqYxTdRm3BLZ9SiSbcx3hl8r374wRxMxHK2VVpztkc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "location",
+									"value": "Clifton",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "68b9361880232dbe3b828cc1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/outlets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"outlets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllOutlets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/outlets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"outlets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOutlet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/outlets/68b930e5c63ac1eeb4ab48ec",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"outlets",
+								"68b930e5c63ac1eeb4ab48ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllOutletsOfBrandsByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/outlets/brand/68b9361880232dbe3b828cc1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"outlets",
+								"brand",
+								"68b9361880232dbe3b828cc1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "addNewOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yjk0ZWVkZjhhOTA4MTJiNzRmMTM5NiIsInJvbGUiOiI2OGI5NGVlZGY4YTkwODEyYjc0ZjEzNjUiLCJpYXQiOjE3NTY5NzQ4OTgsImV4cCI6MTc1NzA2MTI5OH0.X073Z4N0RjrZi2KTY8RgbBAof0kmoayHAODOwKF2Nes",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"68b94eedf8a90812b74f1396\",\r\n    \"outlet\": \"68b94eedf8a90812b74f1380\",\r\n    \"products\": [\r\n        {\r\n            \"product\": \"68b94eedf8a90812b74f139c\",\r\n            \"quantity\": 25\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjkyMjM5MjkxZGRjZTgyZWNlNThjNiIsInJvbGUiOiI2OGI5MjFjMmQ2NzIwMjM2MTNkMmE0ZTMiLCJpYXQiOjE3NTY5NjM0NzYsImV4cCI6MTc1NzA0OTg3Nn0.DUqYxTdRm3BLZ9SiSbcx3hl8r374wRxMxHK2VVpztkc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOrderById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjkyMjM5MjkxZGRjZTgyZWNlNThjNiIsInJvbGUiOiI2OGI5MjFjMmQ2NzIwMjM2MTNkMmE0ZTMiLCJpYXQiOjE3NTY5NjM0NzYsImV4cCI6MTc1NzA0OTg3Nn0.DUqYxTdRm3BLZ9SiSbcx3hl8r374wRxMxHK2VVpztkc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/orders/68b94eedf8a90812b74f13b1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"orders",
+								"68b94eedf8a90812b74f13b1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

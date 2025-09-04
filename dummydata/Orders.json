@@ -15,7 +15,7 @@
             }
         ],
         "totalAmount": 40,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 1,
@@ -59,7 +59,7 @@
             }
         ],
         "totalAmount": 60,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 4,
@@ -90,7 +90,7 @@
             }
         ],
         "totalAmount": 44,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 0,
@@ -121,7 +121,7 @@
             }
         ],
         "totalAmount": 96,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 2,
@@ -152,7 +152,7 @@
             }
         ],
         "totalAmount": 61,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 4,
@@ -201,7 +201,7 @@
             }
         ],
         "totalAmount": 83,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 1,
@@ -232,7 +232,7 @@
             }
         ],
         "totalAmount": 50,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 3,
@@ -276,7 +276,7 @@
             }
         ],
         "totalAmount": 54,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 0,
@@ -307,7 +307,7 @@
             }
         ],
         "totalAmount": 57,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 0,
@@ -325,7 +325,7 @@
             }
         ],
         "totalAmount": 40,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 1,
@@ -369,7 +369,7 @@
             }
         ],
         "totalAmount": 60,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 4,
@@ -400,7 +400,7 @@
             }
         ],
         "totalAmount": 44,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 0,
@@ -431,7 +431,7 @@
             }
         ],
         "totalAmount": 96,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 2,
@@ -462,7 +462,7 @@
             }
         ],
         "totalAmount": 61,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 4,
@@ -511,7 +511,7 @@
             }
         ],
         "totalAmount": 83,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 1,
@@ -542,7 +542,7 @@
             }
         ],
         "totalAmount": 50,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 3,
@@ -586,7 +586,7 @@
             }
         ],
         "totalAmount": 54,
-        "status": "Pending"
+        "status": "Completed"
     },
     {
         "user": 0,
@@ -617,6 +617,6 @@
             }
         ],
         "totalAmount": 57,
-        "status": "Pending"
+        "status": "Completed"
     }
 ]

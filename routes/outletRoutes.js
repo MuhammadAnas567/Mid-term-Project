@@ -7,6 +7,7 @@ const upload = require("../utils/upload");
 // Public routes
 router.get("/", outletController.getAllOutlets);
 router.get("/:id", outletController.getOutletById);
+router.get("/brand/:id", outletController.getAllOutletByBrandId);
 
 // Admin-only routes
 router.post(

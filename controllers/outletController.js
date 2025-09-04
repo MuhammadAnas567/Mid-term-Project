@@ -31,7 +31,7 @@ exports.getAllOutlets = async (req, res) => {
 
     const result = await paginate(Outlet, page, limit);
 
-    res.json({ success: true, ...result });
+    res.json({ success: true, result });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -43,14 +43,31 @@ exports.getOutletById = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    const outlet = await paginate(Outlet, page, limit, { "brand": req.params.id }, ['brand'])
+    const outlet = await paginate(Outlet, page, limit, { "_id": req.params.id }, ['brand'])
 
     if (!outlet) {
-      return res.status(404).json({ error: "outlet not found" });
+      return res.status(404).json({ error: "Outlet not found" });
     }
 
     res.status(200).json({ success: true, data: outlet });
-    res.json({ success: true, data: outlet });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Get all outlet by Brand ID
+exports.getAllOutletByBrandId = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const outlet = await paginate(Outlet, page, limit, { "brand": req.params.id }, ['brand'])
+
+    if (!outlet) {
+      return res.status(404).json({ error: "Outlet not found" });
+    }
+
+    res.status(200).json({ success: true, data: outlet });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
