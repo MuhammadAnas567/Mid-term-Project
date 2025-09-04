@@ -11,6 +11,7 @@ const outletRoutes = require("./routes/outletRoutes");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 app.use(express.json());
@@ -23,7 +24,8 @@ app.use("/brands", brandRoutes); // Working
 app.use("/outlets", outletRoutes); // Working
 app.use("/users", userRoutes); // Working
 app.use("/products", productRoutes); // Working
-app.use("/orders", orderRoutes); 
+app.use("/orders", orderRoutes);
+app.use("/reports", reportRoutes); 
 
 app.get("/admin", authMiddleware(["Admin"]), (req, res) => {
   res.json({ message: "Welcome Admin, you have access!" });
