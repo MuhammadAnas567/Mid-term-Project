@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Super Admin",
+        "email": "sadmin@pos.com",
+        "password": "sadmin123",
+        "roleIndex": 0,
+        "outletIndex": 0
+    },
+    {
+        "name": "Admin",
+        "email": "admin@pos.com",
+        "password": "admin123",
+        "roleIndex": 0,
+        "outletIndex": 0
+    },
+    {
+        "name": "Branch Manager",
+        "email": "manager@pos.com",
+        "password": "manager123",
+        "roleIndex": 1,
+        "outletIndex": 1
+    },
+    {
+        "name": "Front Cashier",
+        "email": "cashier@pos.com",
+        "password": "cashier123",
+        "roleIndex": 2,
+        "outletIndex": 2
+    },
+    {
+        "name": "Staff Member",
+        "email": "staff@pos.com",
+        "password": "staff123",
+        "roleIndex": 3,
+        "outletIndex": 3
+    },
+    {
+        "name": "Customer User",
+        "email": "customer@pos.com",
+        "password": "customer123",
+        "roleIndex": 4,
+        "outletIndex": 4
+    }
+]

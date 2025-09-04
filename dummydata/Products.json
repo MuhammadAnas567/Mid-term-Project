@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Zinger Burger",
+        "price": 450,
+        "brandIndex": 0,
+        "outletIndex": 0,
+        "picture": "zinger.png"
+    },
+    {
+        "name": "Classic Shoes",
+        "price": 2500,
+        "brandIndex": 1,
+        "outletIndex": 1,
+        "picture": "bata_shoes.png"
+    },
+    {
+        "name": "Gulab Jamun",
+        "price": 800,
+        "brandIndex": 2,
+        "outletIndex": 2,
+        "picture": "gulabjamun.png"
+    },
+    {
+        "name": "Kurta Shalwar",
+        "price": 3500,
+        "brandIndex": 3,
+        "outletIndex": 3,
+        "picture": "kurta.png"
+    },
+    {
+        "name": "Formal Shoes",
+        "price": 3200,
+        "brandIndex": 4,
+        "outletIndex": 4,
+        "picture": "servis_shoes.png"
+    },
+    {
+        "name": "Casual Shirt",
+        "price": 2200,
+        "brandIndex": 5,
+        "outletIndex": 5,
+        "picture": "shirt.png"
+    },
+    {
+        "name": "Chicken Haleem",
+        "price": 300,
+        "brandIndex": 6,
+        "outletIndex": 6,
+        "picture": "haleem.png"
+    },
+    {
+        "name": "Metro Sandals",
+        "price": 1800,
+        "brandIndex": 7,
+        "outletIndex": 7,
+        "picture": "sandals.png"
+    },
+    {
+        "name": "Barfi Box",
+        "price": 1200,
+        "brandIndex": 8,
+        "outletIndex": 8,
+        "picture": "barfi.png"
+    },
+    {
+        "name": "Cotton Kurta",
+        "price": 2800,
+        "brandIndex": 9,
+        "outletIndex": 9,
+        "picture": "cotton_kurta.png"
+    },
+    {
+        "name": "Loaded Fries",
+        "price": 400,
+        "brandIndex": 10,
+        "outletIndex": 10,
+        "picture": "fries.png"
+    },
+    {
+        "name": "Borjan Loafers",
+        "price": 4000,
+        "brandIndex": 11,
+        "outletIndex": 11,
+        "picture": "loafers.png"
+    },
+    {
+        "name": "Printed Shirt",
+        "price": 2500,
+        "brandIndex": 12,
+        "outletIndex": 12,
+        "picture": "printed_shirt.png"
+    },
+    {
+        "name": "Chicken Tikka",
+        "price": 600,
+        "brandIndex": 13,
+        "outletIndex": 13,
+        "picture": "tikka.png"
+    },
+    {
+        "name": "Bedsheet Set",
+        "price": 5500,
+        "brandIndex": 14,
+        "outletIndex": 14,
+        "picture": "bedsheet.png"
+    },
+    {
+        "name": "Hot Wings",
+        "price": 550,
+        "brandIndex": 15,
+        "outletIndex": 15,
+        "picture": "wings.png"
+    },
+    {
+        "name": "Hush Puppies Slippers",
+        "price": 3500,
+        "brandIndex": 16,
+        "outletIndex": 16,
+        "picture": "slippers.png"
+    },
+    {
+        "name": "Rasgulla Box",
+        "price": 1000,
+        "brandIndex": 17,
+        "outletIndex": 17,
+        "picture": "rasgulla.png"
+    },
+    {
+        "name": "Jeans",
+        "price": 4000,
+        "brandIndex": 18,
+        "outletIndex": 18,
+        "picture": "jeans.png"
+    },
+    {
+        "name": "Mutton Karahi",
+        "price": 1800,
+        "brandIndex": 19,
+        "outletIndex": 19,
+        "picture": "karahi.png"
+    }
+]

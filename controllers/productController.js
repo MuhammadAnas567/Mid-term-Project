@@ -32,7 +32,7 @@ exports.getAllProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
-    const products = await paginate(Product.find().populate("brand outlet"), page, limit);
+    const products = await paginate(Product, page, limit, {}, ['brand', 'outlet'])
 
     res.status(200).json(products);
   } catch (error) {
@@ -43,9 +43,13 @@ exports.getAllProducts = async (req, res) => {
 // Get product by ID
 exports.getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id)
-      .populate("brand", "name")
-      .populate("outlet", "name");
+    // const product = await Product.findById(req.params.id)
+    //   .populate("brand", "name")
+    //   .populate("outlet", "name");
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    
+    const product = await paginate(Product, page, limit, { "_id": req.params.id }, ['brand'])
 
     if (!product) {
       return res.status(404).json({ error: "Product not found" });

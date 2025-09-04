@@ -6,17 +6,13 @@ const paginate = require("../utils/pagination");
 // Create a new outlet
 exports.createOutlet = async (req, res) => {
   try {
-    const { name, location, brand } = req.body;
+    const { location, brand } = req.body;
 
-    if (!name || !location) {
-      return res.status(400).json({ error: "Name and location are required" });
+    if (!location || !brand) {
+      return res.status(400).json({ error: "Location & Brand ID are required" });
     }
 
-    const outletData = { name, location, brand };
-
-    if (req.file) {
-      outletData.picture = req.file.path;
-    }
+    const outletData = { location, brand };
 
     const outlet = new Outlet(outletData);
     await outlet.save();
@@ -30,13 +26,10 @@ exports.createOutlet = async (req, res) => {
 // Get all outlets (with pagination + brand populate)
 exports.getAllOutlets = async (req, res) => {
   try {
-    const { page = 1, limit = 10 } = req.query;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
 
-    const result = await paginate(
-      Outlet.find().populate("brand"),
-      parseInt(page),
-      parseInt(limit)
-    );
+    const result = await paginate(Outlet, page, limit);
 
     res.json({ success: true, ...result });
   } catch (err) {
@@ -47,8 +40,16 @@ exports.getAllOutlets = async (req, res) => {
 // Get outlet by ID
 exports.getOutletById = async (req, res) => {
   try {
-    const outlet = await Outlet.findById(req.params.id).populate("brand");
-    if (!outlet) return res.status(404).json({ error: "Outlet not found" });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const outlet = await paginate(Outlet, page, limit, { "brand": req.params.id }, ['brand'])
+
+    if (!outlet) {
+      return res.status(404).json({ error: "outlet not found" });
+    }
+
+    res.status(200).json({ success: true, data: outlet });
     res.json({ success: true, data: outlet });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -58,12 +59,9 @@ exports.getOutletById = async (req, res) => {
 // Update outlet
 exports.updateOutlet = async (req, res) => {
   try {
-    const { name, location, brand } = req.body;
+    const { location, brand } = req.body;
 
-    const updateData = { name, location, brand };
-    if (req.file) {
-      updateData.picture = req.file.path;
-    }
+    const updateData = { location, brand };
 
     const outlet = await Outlet.findByIdAndUpdate(req.params.id, updateData, {
       new: true,

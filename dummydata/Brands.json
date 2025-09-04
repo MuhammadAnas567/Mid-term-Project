@@ -1,0 +1,102 @@
+[
+    {
+        "picture": "kfc.png",
+        "name": "KFC",
+        "description": "Fried Chicken and Fast Food"
+    },
+    {
+        "picture": "bata.png",
+        "name": "Bata Shoes",
+        "description": "Footwear for men, women, and kids"
+    },
+    {
+        "picture": "ambala.png",
+        "name": "Ambala Sweets",
+        "description": "Traditional Sweets & Snacks"
+    },
+    {
+        "picture": "gulAhmed.png",
+        "name": "Gul Ahmed",
+        "description": "Clothing and Fashion Brand"
+    },
+    {
+        "picture": "optp.png",
+        "name": "OPT P",
+        "description": "Fast Food Burgers & Fries"
+    },
+    {
+        "picture": "sapphire.png",
+        "name": "Sapphire",
+        "description": "Clothing and Fashion Retail"
+    },
+    {
+        "picture": "subway.png",
+        "name": "Subway",
+        "description": "Fresh Sandwiches"
+    },
+    {
+        "picture": "servis.png",
+        "name": "Servis Shoes",
+        "description": "Shoes & Accessories"
+    },
+    {
+        "picture": "pizzaHut.png",
+        "name": "Pizza Hut",
+        "description": "Pizza and Fast Food"
+    },
+    {
+        "picture": "khaadi.png",
+        "name": "Khaadi",
+        "description": "Clothing and Lifestyle"
+    },
+    {
+        "picture": "burgerKing.png",
+        "name": "Burger King",
+        "description": "Burgers & Fast Food"
+    },
+    {
+        "picture": "stylo.png",
+        "name": "Stylo Shoes",
+        "description": "Shoes for Women"
+    },
+    {
+        "picture": "dominos.png",
+        "name": "Domino’s",
+        "description": "Pizza Delivery"
+    },
+    {
+        "picture": "bonanza.png",
+        "name": "Bonanza Satrangi",
+        "description": "Garments & Fashion"
+    },
+    {
+        "picture": "hardees.png",
+        "name": "Hardee’s",
+        "description": "Burgers & Fast Food"
+    },
+    {
+        "picture": "hushPuppies.png",
+        "name": "Hush Puppies",
+        "description": "Comfort Footwear"
+    },
+    {
+        "picture": "lalQila.png",
+        "name": "Lal Qila",
+        "description": "Fine Dining Restaurant"
+    },
+    {
+        "picture": "engine.png",
+        "name": "Engine",
+        "description": "Fashion & Garments"
+    },
+    {
+        "picture": "chinOne.png",
+        "name": "ChenOne",
+        "description": "Fashion & Home Decor"
+    },
+    {
+        "picture": "mcDonalds.png",
+        "name": "McDonald’s",
+        "description": "Burgers & Meals"
+    }
+]

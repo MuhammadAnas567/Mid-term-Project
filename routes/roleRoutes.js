@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middleware/authMiddleware");
 const roleController = require("../controllers/roleController");
-
-router.post("/", authMiddleware(["Admin"]), roleController.createRole);
-
-router.get("/", authMiddleware(["Admin"]), roleController.getRoles);
+// authMiddleware(["Admin"]),
+router.post("/",  roleController.createRole);
+// authMiddleware(["Admin"]),
+router.get("/",  roleController.getRoles);
 
 router.put("/:id", authMiddleware(["Admin"]), roleController.updateRole);
 

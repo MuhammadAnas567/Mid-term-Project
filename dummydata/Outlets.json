@@ -1,0 +1,82 @@
+[
+    {
+        "location": "Karachi",
+        "brandIndex": 0
+    },
+    {
+        "location": "Lahore",
+        "brandIndex": 1
+    },
+    {
+        "location": "Islamabad",
+        "brandIndex": 2
+    },
+    {
+        "location": "Multan",
+        "brandIndex": 3
+    },
+    {
+        "location": "Faisalabad",
+        "brandIndex": 4
+    },
+    {
+        "location": "Rawalpindi",
+        "brandIndex": 5
+    },
+    {
+        "location": "Hyderabad",
+        "brandIndex": 6
+    },
+    {
+        "location": "Sialkot",
+        "brandIndex": 7
+    },
+    {
+        "location": "Quetta",
+        "brandIndex": 8
+    },
+    {
+        "location": "Peshawar",
+        "brandIndex": 9
+    },
+    {
+        "location": "Gujranwala",
+        "brandIndex": 10
+    },
+    {
+        "location": "Sukkur",
+        "brandIndex": 11
+    },
+    {
+        "location": "Bahawalpur",
+        "brandIndex": 12
+    },
+    {
+        "location": "Sargodha",
+        "brandIndex": 13
+    },
+    {
+        "location": "Mardan",
+        "brandIndex": 14
+    },
+    {
+        "location": "Okara",
+        "brandIndex": 15
+    },
+    {
+        "location": "Kasur",
+        "brandIndex": 16
+    },
+    {
+        "location": "Sheikhupura",
+        "brandIndex": 17
+    },
+    {
+        "location": "Jhelum",
+        "brandIndex": 18
+    },
+    {
+        "location": "Abbottabad",
+        "brandIndex": 19
+    }
+]

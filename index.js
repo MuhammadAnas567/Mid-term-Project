@@ -14,15 +14,16 @@ const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 Connect();
 
-app.use("/auth", authRoutes);
-app.use("/roles", roleRoutes);
-app.use("/brands", brandRoutes);
-app.use("/outlets", outletRoutes);
-app.use("/users", userRoutes);
-app.use("/products", productRoutes);
-app.use("/orders", orderRoutes);
+app.use("/auth", authRoutes); // Working
+app.use("/roles", roleRoutes); // Working
+app.use("/brands", brandRoutes); // Working
+app.use("/outlets", outletRoutes); // Working
+app.use("/users", userRoutes); // Working
+app.use("/products", productRoutes); // Working
+app.use("/orders", orderRoutes); 
 
 app.get("/admin", authMiddleware(["Admin"]), (req, res) => {
   res.json({ message: "Welcome Admin, you have access!" });
